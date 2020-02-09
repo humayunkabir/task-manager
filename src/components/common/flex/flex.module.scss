@@ -1,0 +1,26 @@
+// Flex Container
+.flex { display: flex; }
+.flex-inline { display: inline-flex; }
+.flex-row { flex-direction: row; }
+.flex-row-reverse { flex-direction: row-reverse; }
+.flex-column { flex-direction: column; }
+.flex-column-reverse { flex-direction: column-reverse; }
+.flex-align-start { align-items: flex-start; }
+.flex-align-end { align-items: flex-end; }
+.flex-align-center { align-items: center; }
+.flex-align-baseline { align-items: baseline; }
+.flex-align-stretch { align-items: stretch; }
+.flex-justify-start { justify-content: flex-start; }
+.flex-justify-end { justify-content: flex-end; }
+.flex-justify-center { justify-content: center; }
+.flex-justify-between { justify-content: space-between; }
+.flex-justify-around { justify-content: space-around; }
+.flex-justify-evenly { justify-content: space-evenly; }
+.flex-wrap { flex-wrap: wrap; }
+
+// Flex item
+.flex-align-self-start { align-self: flex-start; }
+.flex-align-self-end { align-self: flex-end; }
+.flex-align-self-center { align-self: center; }
+.flex-align-self-baseline { align-self: baseline; }
+.flex-align-self-stretch { align-self: stretch; }
