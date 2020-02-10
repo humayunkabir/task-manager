@@ -5,6 +5,7 @@ import { Col } from "reactstrap";
 import Column from "./components/Column";
 import Add from "./components/Add";
 import './App.css';
+import Flex from "./components/common/flex/Flex";
 
 const App = ()  => {
   const { tasks, columns, columnDispatch } = useContext(TaskContext);
@@ -53,31 +54,28 @@ const App = ()  => {
   };
   
   return (
-    <DragDropContext onDragEnd={onDragEnd} >
+    <DragDropContext onDragEnd={onDragEnd}>
       <Droppable droppableId="all-columns" direction="horizontal" type="column">
         {(provided) => (
-          <div
+          <Flex
             {...provided.droppableProps}
-            ref={provided.innerRef}
-            className="row"
+            innerRef={provided.innerRef}
+            className="overflow-auto min-vh-100"
           >
             {!!columns.length && columns.map((column, index) => (
-              <Col
-                style={{ width: `${100 / (columns.length + 1)}%`, minWidth: '17rem' }}
-                key={column.id}
-              >
+              <div style={{ width: `${100 / (columns.length + 1)}%`, minWidth: '17rem' }} key={column.id}>
                 <Column
                   column={column}
                   tasks={tasks}
                   index={index}
                 />
-              </Col>
+              </div>
             ))}
             <Col style={{ width: `${100 / (columns.length + 1)}%`, minWidth: '17rem' }}>
               {provided.placeholder}
             </Col>
             <Add type="column" />
-          </div>
+          </Flex>
         )}
       </Droppable>
     </DragDropContext>

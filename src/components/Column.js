@@ -1,10 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {Card, CardBody, CardFooter, CardHeader} from "reactstrap";
+import { Button, Card, CardBody, CardFooter, CardHeader } from "reactstrap";
 import Task from "./Task";
 import { Droppable, Draggable } from "react-beautiful-dnd";
 import classNames from 'classnames';
 import Add from "./Add";
+import Flex from "./common/flex/Flex";
 
 const Column = ({column, tasks, index, ...rest}) => (
   <Draggable draggableId={column.id} index={index}>
@@ -14,13 +15,18 @@ const Column = ({column, tasks, index, ...rest}) => (
         innerRef={provided.innerRef}
         {...rest}
       >
-        <CardHeader {...provided.dragHandleProps}>
-          <h6>{column.title}</h6>
+        <CardHeader
+          {...provided.dragHandleProps}
+          tag={Flex}
+          justify="between"
+          align="center"
+        >
+          <h6 className="mb-0">{column.title}</h6>
+          <Button close />
         </CardHeader>
         <Droppable droppableId={column.id} type="task">
           {(provided, snapshot) => (
             <CardBody
-              column
               innerRef={provided.innerRef}
               {...provided.droppableProps}
               className={classNames({
@@ -31,7 +37,7 @@ const Column = ({column, tasks, index, ...rest}) => (
               {!!column.taskIds.length && column.taskIds.map((id, index) => (
                 <Task task={{ id, ...tasks.find(task => id === task.id) }} index={index} key={id} />
               ))}
-              {provided.placeholder}
+              {/*{provided.placeholder}*/}
             </CardBody>
           )}
         </Droppable>

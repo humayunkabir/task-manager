@@ -11,6 +11,7 @@ const Add = ({ type, columnId }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
+
     if (type === 'task') {
       const id = uuid();
       taskDispatch({type: 'ADD', payload: {id, content: text }});
@@ -34,7 +35,7 @@ const Add = ({ type, columnId }) => {
       </InputGroup>
     </Form>
   ) : (
-    <Button color='light' block onClick={() => setActive(true)}>+ Add {type}</Button>
+    <Button color='light' block={type === 'task'} onClick={() => setActive(true)}>+ Add {type}</Button>
   );
 };
 
